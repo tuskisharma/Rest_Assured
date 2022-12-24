@@ -21,7 +21,7 @@ public class trello_boards {
 	public void create_trello_board() {
 		//JSONObject jr=new JSONObject();
 		RestAssured.baseURI=url;
-		Response response=given().queryParam("name", "iniesta")
+		Response response=given().queryParam("name", "messi")
 		.queryParam("key", keys)
 		.queryParam("token", token).header("Content-Type", "application/json")
 		.when().contentType(ContentType.JSON).accept(ContentType.JSON).post("/1/boards/").then().assertThat().statusCode(200)
@@ -34,12 +34,17 @@ public class trello_boards {
 
 		
 	}
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void delete_board() {
 		RestAssured.baseURI=url;
 		given().queryParam("name", "iniesta").queryParam("key", keys)
 		.queryParam("token", token)
 		.when().contentType(ContentType.JSON).accept(ContentType.JSON).delete("/1/boards/"+id).then().statusCode(200).log().all();
 	}
+//	@Test(enabled = true)
+//	public void update_board(){
+//		RestAssured.baseURI=url;
+//		given().queryParam("key", keys).queryParam("token", token).when().contentType(ContentType.JSON).accept(ContentType.JSON).put
+//	}
 
 }

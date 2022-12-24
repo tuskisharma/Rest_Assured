@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
 
 public class rest1 {
 public String url="https://reqres.in/api/users?page=2";
-@Test(enabled=false)
+@Test(enabled=true)
 public void tc1() {
 	Response re=RestAssured.get(url);
 	int actual=re.statusCode();
@@ -24,7 +24,7 @@ public void get_tc2() {
 	given().get(url).then().statusCode(200).log().all();
 	given().get(url).then().statusCode(200).body("data.first_name", hasItems("Michael"));
 }
-@Test
+@Test(enabled = false)
 public void post_tc3() {
 	JSONObject jso=new JSONObject();
 	jso.put("name", "tushar");
